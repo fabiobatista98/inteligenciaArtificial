@@ -1,0 +1,74 @@
+WarehouseState
+HeuristicWarehouse
+WarehouseProblemForSearch
+
+
+
+
+WarehouseAgentSearch
+(compute fitness) atributos
+Cell shelves |0,0|1,0|2,0|
+Pair pairs |3,3-0,0-0|3,3-2,0-0|0,0-2,0-0|1,0-2,0-0
+Cell exit - 3,3
+Cell cellAgent - 3,3
+int numProducts - 3
+
+WarehouseAgentSearch agentSearch = new WarehouseAgentSearch();
+individuos 1
+int[] genome = |3|2|1| -> contrutor da classe warehouseIndividual - aqui vão percurrer o denoma e preencher as posições aleatórias, sendo que cada produto só pode estar uma vez numa prateleira.
+
+
+
+
+genome[i]=GeneticAlgorithm.random.nextInt(size)+1
+
+System.out.println(Arrays.toString(genome))
+
+individuos 1
+int[] genome = |3|2|1|
+individuos 2
+int[] genome = |3|2|1|
+
+-------------------------------------------------
+
+3 0 0 0
+2 0 0 0
+1 0 0 0
+0 0 0 1
+
+3
+1 2 3
+2 3 1
+3 1 
+
+int[] genome = |3|2|1|
+percorrer todos os pedidos
+	pedido 1 -> fitness
+	percorrer todos os produtos
+		produto 1 a ser apanhado
+			procurar esse produto no genoma(está na 2), ir ás shelves buscar essa prateleira
+			cell 1 - porta - 3,3
+			cell 2 - 2,0 (logo fitness: 3)
+			atualizar o fitness com base no pair correspondente
+			cell 1 - 2,0
+			cell 2 - onde está o poduto 2? - 1,0 (fitness 3+1)
+		produto 2 a ser apanhado
+			procurar esse produto no genoma(está na 1), ir ás shelves buscar essa prateleira
+			cell 1 - 1,0
+			cell 2 - onde está o produto numero 3? - 0,0 (fitness 3+1+1)
+		...
+		para o ultimo produto
+			cell 1 - 0,0,?
+			cell 2 - porta - 3,3 (fitness 3+1+1+5)
+
+(tem que voltar depois de cada pedido
+pedido 2 fitness = 10 + 10 + 10
+
+
+int[] genome = |2|3|1|
+fitness = 10 + 10 + 8 
+
+
+
+
+

@@ -1,0 +1,4 @@
+GeneticAlgorithm
+
+ga -> GeneticAlgorithm tudo igual para o projecto
+ga -> BitVectorIndividual -> BitVectorIndividual tem de ser implementado

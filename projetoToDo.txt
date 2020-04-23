@@ -1,0 +1,12 @@
+WarehouseState
+
+-> WarehouseState(int[][] matrix) (VERIFICAR)
+-> executeAction
+-> executeActionSimulation
+-> setCellAgent(int line, int column) (VERIFICAR!!!)
+-> WarehouseState clone() (VERIFICAR)
+
+WharehouseProblemForSearch
+
+-> WarehouseProblemForSearch(S initialWarehouseState, Cell goalPosition)
+-> List<S> executeActions(S state)
