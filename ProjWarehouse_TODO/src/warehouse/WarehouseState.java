@@ -42,7 +42,7 @@ public class WarehouseState extends State implements Cloneable {
     public void executeActionSimulation(Action action) {
         action.execute(this);
         // TODO
-
+        //teste de commit!
         fireUpdatedEnvironment();
         throw new UnsupportedOperationException("Not implemented yet."); // delete after implementing
     }
