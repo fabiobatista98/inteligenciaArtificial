@@ -1,15 +1,15 @@
 package warehouse;
 
 import agentSearch.Action;
-import agentSearch.Agent;
 import agentSearch.State;
-import ga.Population;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class WarehouseState extends State implements Cloneable {
+
+    //TODO this class might require the definition of additional methods and/or attributes
 
     private int[][] matrix;
     private int lineAgent, columnAgent;
@@ -20,9 +20,7 @@ public class WarehouseState extends State implements Cloneable {
     final int[] colsfinalMatrix = {0, 1, 2, 0, 1, 2, 0, 1, 2};
 
     public WarehouseState(int[][] matrix) {
-
         this.matrix = new int[matrix.length][matrix.length];
-
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
                 this.matrix[i][j] = matrix[i][j];
@@ -44,6 +42,7 @@ public class WarehouseState extends State implements Cloneable {
         steps++;
         fireUpdatedEnvironment();
     }
+
 
     public boolean canMoveUp() {
         return lineAgent != 0 && matrix[lineAgent - 1][columnAgent] != Properties.SHELF;
@@ -202,6 +201,4 @@ public class WarehouseState extends State implements Cloneable {
         }
         return h;
     }
-
-
 }

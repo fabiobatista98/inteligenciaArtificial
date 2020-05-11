@@ -57,3 +57,4 @@ public class WarehouseProblemForSearch<S extends WarehouseState> extends Problem
         return goalPosition.getLine() == state.getLineAgent() && goalPosition.getColumn() == state.getColumnAgent()-1;
     }
 }
+
