@@ -8,11 +8,13 @@ public class WarehouseProblemForSearch<S extends WarehouseState> extends Problem
 
     //TODO this class might require the definition of additional methods and/or attributes
     private Cell goalPosition;
+    int distancia;
 
     public WarehouseProblemForSearch(S initialWarehouseState, Cell goalPosition) {
         super(initialWarehouseState);
         this.goalPosition = goalPosition;
         //linha e coluna do agente = lina e coluna goalPosition
+        distancia = Math.abs(initialWarehouseState.getLineAgent()-goalPosition.getLine())+ Math.abs(initialWarehouseState.getColumnAgent()-goalPosition.getColumn());
     }
 
     @Override
