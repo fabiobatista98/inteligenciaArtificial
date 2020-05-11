@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class WarehouseState extends State implements Cloneable {
 
     //TODO this class might require the definition of additional methods and/or attributes
-
+    //TESTE GITCOMMIT
     private int[][] matrix;
     private int lineAgent, columnAgent;
     private int lineExit;
