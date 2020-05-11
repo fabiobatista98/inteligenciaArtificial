@@ -11,13 +11,13 @@ import java.util.Arrays;
 
 public class WarehouseState extends State implements Cloneable {
 
-    //TODO this class might require the definition of additional methods and/or attributes
-    //TESTE GITCOMMIT
     private int[][] matrix;
     private int lineAgent, columnAgent;
     private int lineExit;
     private int columnExit;
     private int steps;
+    final int[] linesfinalMatrix = {0, 0, 0, 1, 1, 1, 2, 2, 2};
+    final int[] colsfinalMatrix = {0, 1, 2, 0, 1, 2, 0, 1, 2};
 
     public WarehouseState(int[][] matrix) {
 
@@ -189,5 +189,19 @@ public class WarehouseState extends State implements Cloneable {
             listener.environmentUpdated();
         }
     }
+
+    public double computeTileDistances(WarehouseState finalState) {
+        double h = 0;
+        for (int i = 0; i < matrix.length; i++){
+            for (int j = 0; j < matrix.length; j++){
+                if (this.matrix[i][j] != 0) {
+                    h += Math.abs(i - linesfinalMatrix[this.matrix[i][j]])
+                            + Math.abs(j - colsfinalMatrix[this.matrix[i][j]]);
+                }
+            }
+        }
+        return h;
+    }
+
 
 }
