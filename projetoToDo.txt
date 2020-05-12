@@ -6,5 +6,12 @@ WarehouseState
 
 WharehouseProblemForSearch
 
--> WarehouseProblemForSearch(S initialWarehouseState, Cell goalPosition)
--> List<S> executeActions(S state)
+-> WarehouseProblemForSearch(S initialWarehouseState, Cell goalPosition) (VERIFICAR)
+-> List<S> executeActions(S state) (VERIFICAR)
+-> computeTileDistances (VERIFICAR)
+
+
+HeuristicWarehouse
+
+-> compute
+-> toString

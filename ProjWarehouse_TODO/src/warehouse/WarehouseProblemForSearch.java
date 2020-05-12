@@ -8,16 +8,9 @@ import java.util.List;
 
 public class WarehouseProblemForSearch<S extends WarehouseState> extends Problem<S> {
 
-    public WarehouseState getGoalState() {
-        return goalState;
-    }
-
     private Cell goalPosition;
     int distancia;
     private List<Action> actions;
-    private WarehouseState goalState;
-
-
 
     public WarehouseProblemForSearch(S initialWarehouseState, Cell goalPosition) {
         super(initialWarehouseState);
@@ -55,6 +48,10 @@ public class WarehouseProblemForSearch<S extends WarehouseState> extends Problem
         }
         //parteleira
         return goalPosition.getLine() == state.getLineAgent() && goalPosition.getColumn() == state.getColumnAgent()-1;
+    }
+
+    public Cell getGoalPosition() {
+        return goalPosition;
     }
 }
 
