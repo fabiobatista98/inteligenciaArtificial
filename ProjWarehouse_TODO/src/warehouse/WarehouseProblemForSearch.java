@@ -15,7 +15,7 @@ public class WarehouseProblemForSearch<S extends WarehouseState> extends Problem
     public WarehouseProblemForSearch(S initialWarehouseState, Cell goalPosition) {
         super(initialWarehouseState);
         this.goalPosition = goalPosition;
-        //linha e coluna do agente = lina e coluna goalPosition
+        //linha e coluna do agente = linha e coluna goalPosition
         distancia = Math.abs(initialWarehouseState.getLineAgent()-goalPosition.getLine())+ Math.abs(initialWarehouseState.getColumnAgent()-goalPosition.getColumn());
 
         actions = new LinkedList<>();

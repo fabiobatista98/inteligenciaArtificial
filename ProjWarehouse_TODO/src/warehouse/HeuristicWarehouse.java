@@ -5,11 +5,13 @@ import agentSearch.Heuristic;
 public class HeuristicWarehouse extends Heuristic<WarehouseProblemForSearch, WarehouseState> {
     @Override
     public double compute(WarehouseState state){
-        //implementar dentro do state, calcular distancia linear até ao goal
-        //sumatorio do modelo entre esses dois valores
-        Cell agent = new Cell(state.getLineAgent(),state.getColumnAgent());
 
-        return problem.getGoalPosition() + agent;
+        //sumatorio do modelo entre esses dois valores
+        //verificar se o goal é a porta de saida, senão colocar +1 na colona do goal por causa de ser uma parteleira
+        if(state.getLineExit() == problem.getGoalPosition().getLine() && state.getColumnExit() == problem.getGoalPosition().getColumn()){
+            return Math.abs(problem.getGoalPosition().getLine() - state.getLineAgent()) + Math.abs(problem.getGoalPosition().getColumn() -  state.getColumnAgent());
+        }
+        return Math.abs(problem.getGoalPosition().getLine() - state.getLineAgent()) + Math.abs((problem.getGoalPosition().getColumn()+1) -  state.getColumnAgent());
     }
 
 
