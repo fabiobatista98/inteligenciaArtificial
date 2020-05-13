@@ -9,14 +9,11 @@ import java.util.List;
 public class WarehouseProblemForSearch<S extends WarehouseState> extends Problem<S> {
 
     private Cell goalPosition;
-    int distancia;
     private List<Action> actions;
 
     public WarehouseProblemForSearch(S initialWarehouseState, Cell goalPosition) {
         super(initialWarehouseState);
         this.goalPosition = goalPosition;
-        //linha e coluna do agente = linha e coluna goalPosition
-        distancia = Math.abs(initialWarehouseState.getLineAgent()-goalPosition.getLine())+ Math.abs(initialWarehouseState.getColumnAgent()-goalPosition.getColumn());
 
         actions = new LinkedList<>();
         actions.add(new ActionDown());
@@ -36,7 +33,6 @@ public class WarehouseProblemForSearch<S extends WarehouseState> extends Problem
                 successors.add((S) successor);
             }
         }
-
         return successors;
     }
 

@@ -20,12 +20,27 @@ public class WarehouseState extends State implements Cloneable {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
                 this.matrix[i][j] = matrix[i][j];
-                if (this.matrix[i][j] == 0) {
+                if (this.matrix[i][j] == 1) {
                     lineExit = i;
                     columnExit = j;
+                    lineAgent = i;
+                    columnAgent = j;
                 }
             }
         }
+    }
+
+    public WarehouseState(int[][] matrix, int lineAgent, int columnAgent, int lineExit, int columnExit) {
+        this.matrix = new int[matrix.length][matrix.length];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                this.matrix[i][j] = matrix[i][j];
+            }
+        }
+        this.lineAgent = lineAgent;
+        this.columnAgent = columnAgent;
+        this.lineExit = lineExit;
+        this.columnExit = columnExit;
     }
 
     public void executeAction(Action action) {
@@ -38,7 +53,6 @@ public class WarehouseState extends State implements Cloneable {
         steps++;
         fireUpdatedEnvironment();
     }
-
 
     public boolean canMoveUp() {
         return lineAgent != 0 && matrix[lineAgent - 1][columnAgent] != Properties.SHELF;
@@ -81,6 +95,7 @@ public class WarehouseState extends State implements Cloneable {
         lineAgent = line;
         columnAgent = column;
         matrix[lineAgent][columnAgent] = Properties.AGENT;
+
     }
 
     public int getSteps() {
@@ -164,7 +179,7 @@ public class WarehouseState extends State implements Cloneable {
 
     @Override
     public WarehouseState clone() {
-        return new WarehouseState(matrix);
+        return new WarehouseState(matrix, lineAgent, columnAgent, lineExit, columnExit);
     }
 
     private final ArrayList<EnvironmentListener> listeners = new ArrayList<>();

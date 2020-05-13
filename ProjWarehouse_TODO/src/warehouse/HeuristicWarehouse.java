@@ -14,7 +14,6 @@ public class HeuristicWarehouse extends Heuristic<WarehouseProblemForSearch, War
         return Math.abs(problem.getGoalPosition().getLine() - state.getLineAgent()) + Math.abs((problem.getGoalPosition().getColumn()+1) -  state.getColumnAgent());
     }
 
-
     @Override
     public String toString(){
         return "Tiles distance to final position";
