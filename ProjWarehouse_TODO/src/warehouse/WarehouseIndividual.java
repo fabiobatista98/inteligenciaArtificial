@@ -7,15 +7,20 @@ import java.util.Arrays;
 
 public class WarehouseIndividual extends IntVectorIndividual<WarehouseProblemForGA, WarehouseIndividual> {
 
-    //TODO this class might require the definition of additional methods and/or attributes
+    private double value;
+    private double weight;
 
     public WarehouseIndividual(WarehouseProblemForGA problem, int size) {
         super(problem, size);
-        //TODO
+
         for (int i = 0; i < genome.length; i++) {
-            //preencher genome
-            //1-size
             genome[i] = GeneticAlgorithm.random.nextInt(size)+1;
+            for (int j = 0; j < i-1; j++) {
+                 if(genome[i] == genome[j] && i!=0){
+                     i--;
+                     break;
+                 }
+            }
         }
         System.out.println(Arrays.toString(genome));
     }
@@ -26,8 +31,25 @@ public class WarehouseIndividual extends IntVectorIndividual<WarehouseProblemFor
 
     @Override
     public double computeFitness() {
-        fitness = 0;
         //calcular
+
+        fitness = weight = value = 0;
+        for (int i = 0; i < genome.length; i++) {
+
+            value += problem.getItem(i).value;
+            weight += problem.getItem(i).weight;
+
+        }
+        switch (problem.getFitnessType()) {
+            case Knapsack.SIMPLE_FITNESS:
+                fitness = weight <= problem.getMaximumWeight() ? value : 0;
+                break;
+            case Knapsack.PENALTY_FITNESS:
+                double penalty = 0;
+                if (weight > problem.getMaximumWeight())
+                    penalty = problem.getMaxVP() * (weight - problem.getMaximumWeight());
+                fitness = value - penalty;
+        }
         return fitness;
     }
 
