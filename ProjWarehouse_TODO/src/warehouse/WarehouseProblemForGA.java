@@ -19,13 +19,19 @@ public class WarehouseProblemForGA implements Problem<WarehouseIndividual> {
 
     public WarehouseProblemForGA(WarehouseAgentSearch agentSearch) {
         //TODO
-        throw new UnsupportedOperationException("Not implemented yet.");
+        this.shelves = agentSearch.getShelves();
+        this.requests = agentSearch.getRequests();
+        this.numProducts = agentSearch.getNumProducts();
+        this.cellAgent = agentSearch.getCellAgent();
+        this.exit = agentSearch.getExit();
+
+        this.pairs = agentSearch.getPairs();
     }
 
     @Override
     public WarehouseIndividual getNewIndividual() {
         //TODO
-        throw new UnsupportedOperationException("Not implemented yet.");
+        return new WarehouseIndividual(this, numProducts);
     }
 
     public LinkedList<Cell> getShelves() {
