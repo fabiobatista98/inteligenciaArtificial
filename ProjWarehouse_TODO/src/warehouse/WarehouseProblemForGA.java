@@ -3,12 +3,15 @@ package warehouse;
 import ga.Problem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 public class WarehouseProblemForGA implements Problem<WarehouseIndividual> {
 
     //TODO this class might require the definition of additional methods and/or attributes
     //generic al
+
+
 
     private LinkedList<Cell> shelves;
     private Cell cellAgent;
@@ -31,7 +34,7 @@ public class WarehouseProblemForGA implements Problem<WarehouseIndividual> {
     @Override
     public WarehouseIndividual getNewIndividual() {
         //TODO
-        return new WarehouseIndividual(this, numProducts);
+        return new WarehouseIndividual(this, shelves.size());
     }
 
     public LinkedList<Cell> getShelves() {
@@ -55,6 +58,9 @@ public class WarehouseProblemForGA implements Problem<WarehouseIndividual> {
     }
 
     public LinkedList<Pair> getPairs() {
+
+
+
         return pairs;
     }
 }

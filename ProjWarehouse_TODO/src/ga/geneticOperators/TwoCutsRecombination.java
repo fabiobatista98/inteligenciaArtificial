@@ -15,6 +15,7 @@ public class TwoCutsRecombination<I extends IntVectorIndividual, P extends Probl
     @Override
     public void recombine(I ind1, I ind2) {
 
+        boolean flag1, flag2;
         int cut1 = GeneticAlgorithm.random.nextInt(ind1.getNumGenes());
         int cut2 = GeneticAlgorithm.random.nextInt(ind1.getNumGenes());
         if (cut1 > cut2) {
@@ -28,13 +29,20 @@ public class TwoCutsRecombination<I extends IntVectorIndividual, P extends Probl
         for (int i = cut1; i < cut2; i++) {
             aux1 = ind1.getGene(i);
             aux2 = ind2.getGene(i);
+            flag1 = false;
+            flag2 = false;
             ind1.swapGenes(ind2, i);
             for (int j = 0; j < ind1.getNumGenes(); j++) {
                 if(ind1.getGene(j) == aux2 && i!=j){
                     ind1.setGene(j, aux1);
+                    flag1 = true;
                 }
                 if(ind2.getGene(j) == aux1 && i!=j){
                     ind2.setGene(j, aux2);
+                    flag2 = true;
+                }
+                if(flag1 && flag2){
+                    break;
                 }
             }
         }

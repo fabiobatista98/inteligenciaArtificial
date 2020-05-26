@@ -14,9 +14,12 @@ public class UniformRecombination<I extends IntVectorIndividual, P extends Probl
 
     @Override
     public void recombine(I ind1, I ind2) {
-        //TODO
+
         int aux1 = 0, aux2 = 0;
+        boolean flag1, flag2;
         for (int i = 0; i < ind1.getNumGenes(); i++) {
+            flag1 = false;
+            flag2 = false;
             if (GeneticAlgorithm.random.nextBoolean()) {
                 aux1 = ind1.getGene(i);
                 aux2 = ind2.getGene(i);
@@ -24,9 +27,14 @@ public class UniformRecombination<I extends IntVectorIndividual, P extends Probl
                 for (int j = 0; j < ind1.getNumGenes(); j++) {
                     if(ind1.getGene(j) == aux2 && i!=j){
                         ind1.setGene(j, aux1);
+                        flag1 = true;
                     }
                     if(ind2.getGene(j) == aux1 && i!=j){
                         ind2.setGene(j, aux2);
+                        flag2 = true;
+                    }
+                    if(flag1 && flag2){
+                        break;
                     }
                 }
             }
@@ -35,7 +43,7 @@ public class UniformRecombination<I extends IntVectorIndividual, P extends Probl
 
     @Override
     public String toString(){
-        //TODO
+
         return "Uniform recombination (" + probability + ")";
     }
 }

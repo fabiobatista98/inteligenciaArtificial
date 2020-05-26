@@ -3,7 +3,6 @@ package warehouse;
 import ga.GeneticAlgorithm;
 import ga.IntVectorIndividual;
 
-import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class WarehouseIndividual extends IntVectorIndividual<WarehouseProblemForGA, WarehouseIndividual> {
@@ -20,7 +19,7 @@ public class WarehouseIndividual extends IntVectorIndividual<WarehouseProblemFor
                 }
             }
         }
-        System.out.println(Arrays.toString(genome));
+        //System.out.println(Arrays.toString(genome));
     }
 
     public WarehouseIndividual(WarehouseIndividual original) {
@@ -49,12 +48,15 @@ public class WarehouseIndividual extends IntVectorIndividual<WarehouseProblemFor
 
     public int distancia(Cell cell1, Cell cell2){
 
-        for (int i = 0; i < problem.getPairs().size(); i++) {
-            if(problem.getPairs().get(i).getCell1().equals(cell1) && problem.getPairs().get(i).getCell2().equals(cell2) ||
-                    problem.getPairs().get(i).getCell1().equals(cell2) && problem.getPairs().get(i).getCell2().equals(cell1)){
-                return problem.getPairs().get(i).getValue();
+        //alterar para usar a hash map
+
+        for (Pair p : problem.getPairs()) {
+            if (p.getCell1().equals(cell1) && p.getCell2().equals(cell2) ||
+                p.getCell1().equals(cell2) && p.getCell2().equals(cell1)) {
+                return p.getValue();
             }
         }
+
         throw new NoSuchElementException("Erro: Não foi encontrado o caminho entre " + cell1.toString() + " e " + cell2.toString());
     }
 

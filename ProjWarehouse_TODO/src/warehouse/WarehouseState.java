@@ -11,8 +11,7 @@ public class WarehouseState extends State implements Cloneable {
 
     private int[][] matrix;
     private int lineAgent, columnAgent;
-    private int lineExit;
-    private int columnExit;
+    private int lineExit, columnExit;
     private int steps;
 
     public WarehouseState(int[][] matrix) {
@@ -137,11 +136,11 @@ public class WarehouseState extends State implements Cloneable {
     }
 
     public int getLineExit() {
-        return lineAgent;
+        return lineExit;
     }
 
     public int getColumnExit() {
-        return columnAgent;
+        return columnExit;
     }
 
     @Override

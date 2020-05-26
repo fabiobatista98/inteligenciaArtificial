@@ -69,7 +69,7 @@ public class WarehouseExperimentsFactory extends ExperimentsFactory {
                 mutation = new ScrambleMutation<>(mutationProbability);
                 break;
             case "Binary": //TODO
-                mutation = new BinaryMutation<>(mutationProbability);
+                mutation = new SwapMutation<>(mutationProbability);
                 break;
         }
 
