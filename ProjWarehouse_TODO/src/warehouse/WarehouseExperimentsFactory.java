@@ -51,11 +51,11 @@ public class WarehouseExperimentsFactory extends ExperimentsFactory {
             case "pmx":
                 recombination = new RecombinationPartialMapped<>(recombinationProbability);
                 break;
-            case "TODO1": //TODO
-                recombination = new Recombination3<>(recombinationProbability);
+            case "Uniform": //TODO
+                recombination = new UniformRecombination<>(recombinationProbability);
                 break;
-            case "TODO2": //TODO
-                recombination = new Recombination2<>(recombinationProbability);
+            case "TwoCuts": //TODO
+                recombination = new TwoCutsRecombination<>(recombinationProbability);
                 break;
         }
 
@@ -65,11 +65,11 @@ public class WarehouseExperimentsFactory extends ExperimentsFactory {
             case "insert":
                 mutation = new MutationInsert<>(mutationProbability);
                 break;
-            case "TODO1": //TODO
-                mutation = new Mutation3<>(mutationProbability);
+            case "Scramble": //TODO
+                mutation = new ScrambleMutation<>(mutationProbability);
                 break;
-            case "TODO2": //TODO
-                mutation = new Mutation2<>(mutationProbability);
+            case "Binary": //TODO
+                mutation = new BinaryMutation<>(mutationProbability);
                 break;
         }
 

@@ -29,11 +29,11 @@ public class PanelParameters extends PanelAtributesValue {
     JComboBox comboBoxSelectionMethods = new JComboBox(selectionMethods);
     JTextField textFieldTournamentSize = new JTextField(TOURNAMENT_SIZE, TEXT_FIELD_LENGHT);
 
-    String[] recombinationMethods = {"PMX", "TODO", "TODO"};
+    String[] recombinationMethods = {"PMX", "Uniform", "TwoCuts"};
     JComboBox comboBoxRecombinationMethods = new JComboBox(recombinationMethods);
     JTextField textFieldProbRecombination = new JTextField(PROB_RECOMBINATION, TEXT_FIELD_LENGHT);
 
-    String[] mutationMethods = {"Insert", "TODO", "TODO"};
+    String[] mutationMethods = {"Insert", "Binary", "Scramble"};
     JComboBox comboBoxMutationMethods = new JComboBox(mutationMethods);
     JTextField textFieldProbMutation = new JTextField(PROB_MUTATION, TEXT_FIELD_LENGHT);
 
@@ -115,9 +115,9 @@ public class PanelParameters extends PanelAtributesValue {
             case 0:
                 return new RecombinationPartialMapped<>(recombinationProb);
             case 1:
-                return new Recombination3<>(recombinationProb);
+                return new UniformRecombination<>(recombinationProb);
             case 2:
-                return new Recombination2<>(recombinationProb);
+                return new TwoCutsRecombination<>(recombinationProb);
         }
         return null;
     }
@@ -128,9 +128,9 @@ public class PanelParameters extends PanelAtributesValue {
             case 0:
                 return new MutationInsert<>(mutationProbability);
             case 1:
-                return new Mutation2<>(mutationProbability);
+                return new BinaryMutation<>(mutationProbability);
             case 2:
-                return new Mutation3<>(mutationProbability);
+                return new ScrambleMutation<>(mutationProbability);
         }
         return null;
     }
