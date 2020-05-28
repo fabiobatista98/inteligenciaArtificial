@@ -4,6 +4,7 @@ import ga.Problem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.LinkedList;
 
 public class WarehouseProblemForGA implements Problem<WarehouseIndividual> {
@@ -11,7 +12,7 @@ public class WarehouseProblemForGA implements Problem<WarehouseIndividual> {
     //TODO this class might require the definition of additional methods and/or attributes
     //generic al
 
-
+    private Hashtable<String,Integer> hashPairs = new Hashtable<>();
 
     private LinkedList<Cell> shelves;
     private Cell cellAgent;
@@ -21,7 +22,7 @@ public class WarehouseProblemForGA implements Problem<WarehouseIndividual> {
     private LinkedList<Pair> pairs;
 
     public WarehouseProblemForGA(WarehouseAgentSearch agentSearch) {
-        //TODO
+
         this.shelves = agentSearch.getShelves();
         this.requests = agentSearch.getRequests();
         this.numProducts = agentSearch.getNumProducts();
@@ -29,6 +30,12 @@ public class WarehouseProblemForGA implements Problem<WarehouseIndividual> {
         this.exit = agentSearch.getExit();
 
         this.pairs = agentSearch.getPairs();
+
+        hashPairs = new Hashtable();
+
+        for (Pair p : this.pairs) {
+            hashPairs.put(p.getHash(),p.getValue());
+        }
     }
 
     @Override
@@ -58,9 +65,10 @@ public class WarehouseProblemForGA implements Problem<WarehouseIndividual> {
     }
 
     public LinkedList<Pair> getPairs() {
-
-
-
         return pairs;
+    }
+
+    public Hashtable<String, Integer> getHashPairs() {
+        return hashPairs;
     }
 }

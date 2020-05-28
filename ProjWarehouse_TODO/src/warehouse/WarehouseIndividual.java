@@ -19,7 +19,6 @@ public class WarehouseIndividual extends IntVectorIndividual<WarehouseProblemFor
                 }
             }
         }
-        //System.out.println(Arrays.toString(genome));
     }
 
     public WarehouseIndividual(WarehouseIndividual original) {
@@ -48,13 +47,14 @@ public class WarehouseIndividual extends IntVectorIndividual<WarehouseProblemFor
 
     public int distancia(Cell cell1, Cell cell2){
 
-        //alterar para usar a hash map
+        Pair p1 = new Pair(cell1, cell2);
+        if (problem.getHashPairs().containsKey(p1.getHash())){
+            return problem.getHashPairs().get(p1.getHash());
+        }
 
-        for (Pair p : problem.getPairs()) {
-            if (p.getCell1().equals(cell1) && p.getCell2().equals(cell2) ||
-                p.getCell1().equals(cell2) && p.getCell2().equals(cell1)) {
-                return p.getValue();
-            }
+        p1 = new Pair(cell2, cell1);
+        if (problem.getHashPairs().containsKey(p1.getHash())){
+            return problem.getHashPairs().get(p1.getHash());
         }
 
         throw new NoSuchElementException("Erro: Não foi encontrado o caminho entre " + cell1.toString() + " e " + cell2.toString());

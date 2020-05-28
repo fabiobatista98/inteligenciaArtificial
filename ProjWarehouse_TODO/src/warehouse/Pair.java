@@ -30,4 +30,8 @@ public class Pair {
     public String toString() {
         return cell1.getLine() + "-" + cell1.getColumn() + " / " + cell2.getLine() + "-" + cell2.getColumn() + ": " + value + "\n";
     }
+
+    public String getHash(){
+        return cell1.getLine() + "_" + cell1.getColumn() + "|" + cell2.getLine() + "_" + cell2.getColumn();
+    }
 }
