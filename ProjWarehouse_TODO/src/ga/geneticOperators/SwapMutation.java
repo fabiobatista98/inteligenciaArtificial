@@ -10,23 +10,24 @@ public class SwapMutation<I extends IntVectorIndividual, P extends Problem<I>> e
         super(probability);
     }
 
+    int num1 = 0, num2 = 0, aux = 0;
+
     @Override
     public void mutate(I ind) {
 
-        int num1 = GeneticAlgorithm.random.nextInt(ind.getNumGenes());
-        int num2 = num1;
+        num1 = GeneticAlgorithm.random.nextInt(ind.getNumGenes());
+        num2 = num1;
         while(num1==num2){
             num2 = GeneticAlgorithm.random.nextInt(ind.getNumGenes());
         }
 
-        int aux = ind.getGene(num1);
+        aux = ind.getGene(num1);
         ind.setGene(num1, ind.getGene(num2));
         ind.setGene(num2, aux);
     }
 
     @Override
     public String toString() {
-
         return "Swap";
     }
 }

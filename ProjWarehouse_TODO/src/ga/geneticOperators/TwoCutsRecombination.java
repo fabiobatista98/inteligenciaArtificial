@@ -12,19 +12,23 @@ public class TwoCutsRecombination<I extends IntVectorIndividual, P extends Probl
         super(probability);
     }
 
+    int cut1 = 0, cut2 = 0;
+    int aux1 = 0, aux2 = 0;
+    boolean flag1, flag2;
+
     @Override
     public void recombine(I ind1, I ind2) {
 
-        boolean flag1, flag2;
-        int cut1 = GeneticAlgorithm.random.nextInt(ind1.getNumGenes());
-        int cut2 = GeneticAlgorithm.random.nextInt(ind1.getNumGenes());
+
+        cut1 = GeneticAlgorithm.random.nextInt(ind1.getNumGenes());
+        cut2 = GeneticAlgorithm.random.nextInt(ind1.getNumGenes());
         if (cut1 > cut2) {
             int aux = cut1;
             cut1 = cut2;
             cut2 = aux;
         }
-        int aux1 = 0;
-        int aux2 = 0;
+        aux1 = 0;
+        aux2 = 0;
 
         for (int i = cut1; i < cut2; i++) {
             aux1 = ind1.getGene(i);
@@ -51,6 +55,6 @@ public class TwoCutsRecombination<I extends IntVectorIndividual, P extends Probl
     @Override
     public String toString(){
 
-        return "Two cuts recombination (" + probability + ")";
+        return "TwoCuts";
     }
 }

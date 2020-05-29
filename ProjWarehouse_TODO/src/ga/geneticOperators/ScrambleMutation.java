@@ -10,11 +10,12 @@ public class ScrambleMutation<I extends IntVectorIndividual, P extends Problem<I
         super(probability);
     }
 
+    int cut1 = 0, cut2 = 0;
+
     @Override
     public void mutate(I ind) {
 
-        int cut1 = GeneticAlgorithm.random.nextInt(ind.getNumGenes());
-        int cut2;
+        cut1 = GeneticAlgorithm.random.nextInt(ind.getNumGenes());
         do {
             cut2 = GeneticAlgorithm.random.nextInt(ind.getNumGenes());
         }while (cut1==cut2);

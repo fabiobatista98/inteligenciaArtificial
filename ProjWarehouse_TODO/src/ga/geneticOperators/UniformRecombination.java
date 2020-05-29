@@ -12,11 +12,13 @@ public class UniformRecombination<I extends IntVectorIndividual, P extends Probl
         super(probability);
     }
 
+    int aux1 = 0, aux2 = 0;
+    boolean flag1, flag2;
+
     @Override
     public void recombine(I ind1, I ind2) {
 
-        int aux1 = 0, aux2 = 0;
-        boolean flag1, flag2;
+
         for (int i = 0; i < ind1.getNumGenes(); i++) {
             flag1 = false;
             flag2 = false;
@@ -44,6 +46,6 @@ public class UniformRecombination<I extends IntVectorIndividual, P extends Probl
     @Override
     public String toString(){
 
-        return "Uniform recombination (" + probability + ")";
+        return "Uniform";
     }
 }
